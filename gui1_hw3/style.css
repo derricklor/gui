@@ -13,9 +13,8 @@ td:first-child{
 	background-color: black;
 	color: white;
 }
-div {
-	overflow-x:auto;
-	overflow-y:auto;
+#myTable {
+	overflow: scroll;
 }
 table {
 	table-layout: fixed;
