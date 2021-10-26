@@ -1,0 +1,101 @@
+header, hgroup, nav, footer, figure, figcaption, aside, section, article {
+    display: block;
+    background-color: #000000;
+}
+
+body {
+    margin-left: 10%;  /*main area of page is 80%=100%-10%-10%*/
+    min-width: 600px;   /*minimum width of 600px*/
+    margin-right: 10%;
+    color: #666666;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("ptrbackground.jpg");
+    background-color: #00569f;
+}
+
+nav ul {
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style-type: none;
+    margin: 0;
+    padding: 15px 0px 0px 0px; /* top right bottom left*/
+    width: 150px;
+    height: auto;
+    text-align: left;
+    position: absolute;
+}
+nav ul li a {
+    /*style the buttons in the nav itself*/
+    margin: 10px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #000050;
+}
+nav a:visited {
+    color: #344873;
+}
+nav a:hover {
+    color: #FFFFFF;
+}
+h1 {
+    font-family: serif;
+    margin-bottom: 0;
+    padding: 10px;
+    background-image: url("sunset.jpg");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: #000050; /*eye dropper to get color from img*/
+    text-align: left;
+    color: white;
+}
+
+#wrapper {
+    background-color: skyblue;
+}
+
+h2 {
+    color: #3399CC;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.resort{
+    color: #3399CC;
+    font-weight: bold;
+}
+
+#content {
+    margin-left: 180px;
+    padding-left: 20px;
+    padding-top: 10px;
+    background-color: white;
+}
+
+#content > img {
+    float: left; /*make the img stay left*/
+    margin-right: 25px;
+}
+
+#content > span + p{
+    display: inline; /*make text side by side with img*/
+
+}
+
+#content > ul {
+    /*change the bullet images*/
+    list-style-image: url("marker.gif");
+    list-style-position: inside;
+}
+
+#contact {
+    padding-left: 10px;
+    font-size: 90%;
+}
+
+footer {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    background-color: white;
+    margin-left: 180px;
+    padding: 20px;
+    padding-top: 40px;
+}

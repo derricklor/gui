@@ -1,0 +1,68 @@
+/*
+File: style.css
+GUI Assignment: HW 1 Set up, GitHub and First Web Page
+Copyright 2021 Derrick Lor
+Created Sept, 9 2021
+The CSS styling sheets used to affect the looks of my webpage.
+*/
+
+body {
+
+	background-color: #14141430;
+	font-family: Georgia;
+	font-weight: normal;
+	font-size: 16px;
+}
+
+h1 {
+	font-size: 40px;
+}
+
+div.gallery:hover {
+	/* When hovering over an image, make it darker*/
+  filter: brightness(50%);
+}
+
+p {
+	font-family: Lora;
+	font-weight: normal;
+}
+
+
+.navbar {
+	/*removes default settings for ul*/
+    padding: 0;	
+    margin: 0;
+
+	border: 1px solid #000;
+	list-style-type: none;
+	width: 15%;
+	height: 100%;
+	position: fixed;
+	overflow: auto;
+    background-color: #f1f1f1;
+    
+
+}
+
+li a {
+	text-align: center;
+	display: block;
+	color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-bottom: 1px solid #555;
+}
+
+
+li a:hover {
+	/*Hovering over the navbar changes its color*/
+  background-color: #888;
+  color: white;
+}
+
+.active {
+	/*Changes the color of the active webpage in the navbar*/
+  background-color: #8db3c9;
+  color: white;
+}

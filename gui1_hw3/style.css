@@ -1,0 +1,22 @@
+
+/*creates the gray stripes*/
+tr:nth-child(even){
+	background-color: lightgray;
+}
+/*styles the x-axis header*/
+tr:first-child{
+	background-color: black;
+	color: white;
+}
+/*styles the y-axis header*/
+td:first-child{
+	background-color: black;
+	color: white;
+}
+div {
+	overflow-x:auto;
+	overflow-y:auto;
+}
+table {
+	table-layout: fixed;
+}

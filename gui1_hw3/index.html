@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiplication Table Generator</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <!--link the javascript in the header, so the button can call the
+    function-->
+  <script src="javascript.js"></script>
+</head>
+
+<body>
+
+<div class="info">
+ <h1>Multiplication Table Generator</h1>
+ <p>Enter the multiplication table limits</p>
+</div>
+
+<div class="form">
+  <label for="rowmin">Row minimum:</label>
+  <input type="number" id="rowmin" name="rowmin">
+  <br>
+  <label for="rowmax">Row maximum:</label>
+  <input type="number" id="rowmax" name="rowmax">
+  <br>
+  <label for="colmin">Column minimum:</label>
+  <input type="number" id="colmin" name="colmin">
+  <br>
+  <label for="colmax">Column maximum:</label>
+  <input type="number" id="colmax" name="colmax">
+  <br><br>
+  <!-- run the function createTable in the javascript-->
+  <button id="button" onclick="createTable()">Create Table</button>
+</div>
+
+<!--empty divs to be filled later with javascript-->
+<div id="errorMessage"></div>
+<hr>  <!--hr to create a line-->
+<div id="myTable"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!--
+File: index.html
+GUI Assignment: HW 1 Set up, GitHub and First Web Page
+Copyright 2021 Derrick Lor
+Created Sept, 9 2021
+My first webpage that displays images, tables, 
+and some interesting reads.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>My first webpage</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <!-- Inserts a navbar on the left side of the screen -->
+    <ul class="navbar">
+		<li><a class="active" href="index.html">Home</a></li>
+		<li><a href="aboutme.html">About Me</a></li>
+		<li><a href="games.html">Games</a></li>
+		<li><a href="readings.html">Readings</a></li>
+	</ul>
+
+    <div style="margin-left:20%">
+    <h1>Welcome to Derrick's webpage!</h1>
+	<p>
+		This webpage has some cool things that I have found interesting.<br>
+		<strong>Use the navigation bar on the left-side of the screen to browse different webpages.<br>
+		Or click the images below to jump to a different webpage.</strong>
+	</p>
+
+	<!-- Have images that link to my othe webpages-->
+	<div class="gallery">
+		<a href="aboutme.html"> <img src="images/me.jpg" width="240" height="320" title="About Me"
+			alt="Link to about me"></a>
+	</div>
+			
+	<div class="gallery">
+		<a href="games.html"> <img src="images/Chess.png" width="400" height="225" title="Games"
+			alt="link to games"></a>
+	</div>
+
+	<div class="gallery">
+		<a href="readings.html"> <img src="images/book.png" title="Readings" alt="link to readings"></a>
+	</div>
+	
+	<p>	<!-- Insert the CSS validator image-->
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px;"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!" />
+    </a>
+	</p>
+	</div>
+
+	
+  </body>
+</html>
