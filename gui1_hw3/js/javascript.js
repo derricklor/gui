@@ -1,4 +1,11 @@
-
+/*
+Copyright 2021 Derrick Lor
+Umass Lowell Computer Science
+Email: derrick_lor@student.uml.edu
+GUI Programming I
+Assignment: Homework 3 Multiplication Table
+Sources: w3schools
+*/
 function createTable(){
     
     var rmin = document.getElementById("rowmin").value;
