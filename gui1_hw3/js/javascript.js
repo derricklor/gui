@@ -3,6 +3,7 @@ Copyright 2021 Derrick Lor
 Umass Lowell Computer Science
 Email: derrick_lor@student.uml.edu
 GUI Programming I
+Date: 10/26/2021
 Assignment: Homework 3 Multiplication Table
 Sources: w3schools
 */
