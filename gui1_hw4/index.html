@@ -1,0 +1,57 @@
+<!--
+Copyright 2021 Derrick Lor
+Umass Lowell Computer Science
+Email: derrick_lor@student.uml.edu
+GUI Programming I
+Date: 11/4/2021
+Assignment: Homework 4 jQuery validation
+Sources: w3schools jqueryvalidation youtube
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiplication Table Generator</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+
+<body>
+
+<div class="info">
+ <h1>Multiplication Table Generator</h1>
+ <p>Enter the multiplication table limits</p>
+</div>
+
+<form id="form">
+  <label for="rowmin">Row minimum:</label>
+  <input type="number" id="rowmin" name="rowmin" required>
+  <br>
+  <label for="rowmax">Row maximum:</label>
+  <input type="number" id="rowmax" name="rowmax" required>
+  <br>
+  <label for="colmin">Column minimum:</label>
+  <input type="number" id="colmin" name="colmin" required>
+  <br>
+  <label for="colmax">Column maximum:</label>
+  <input type="number" id="colmax" name="colmax" required>
+  <br><br>
+  <!-- validate the form before running createTable -->
+  <input class="submit" type="submit" value="Create Table">
+</form>
+
+<!--empty divs to be filled later with javascript-->
+<div id="errorMessage"></div>
+<hr>  <!--hr to create a line-->
+<div id="myTable"></div>
+
+<!--link the jquery validation-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script>
+$("#form").validate();
+</script>
+</body>
+</html>

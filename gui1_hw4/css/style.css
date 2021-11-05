@@ -1,0 +1,29 @@
+/*
+Copyright 2021 Derrick Lor
+Umass Lowell Computer Science
+Email: derrick_lor@student.uml.edu
+GUI Programming I
+Date: 10/26/2021
+Assignment: Homework 3 Multiplication Table
+Sources: w3schools
+*/
+/*creates the gray stripes*/
+tr:nth-child(even){
+	background-color: lightgray;
+}
+/*styles the x-axis header*/
+tr:first-child{
+	background-color: black;
+	color: white;
+}
+/*styles the y-axis header*/
+td:first-child{
+	background-color: black;
+	color: white;
+}
+#myTable {
+	overflow: scroll;
+}
+table {
+	table-layout: fixed;
+}
