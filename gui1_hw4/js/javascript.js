@@ -3,10 +3,35 @@ Copyright 2021 Derrick Lor
 Umass Lowell Computer Science
 Email: derrick_lor@student.uml.edu
 GUI Programming I
-Date: 10/26/2021
-Assignment: Homework 3 Multiplication Table
-Sources: w3schools
+Date: 11/4/2021
+Assignment: Homework 4 jQuery validation
+Sources: w3schools jqueryvalidation youtube
 */
+
+
+$(document).ready(function(){
+
+    // jQuery methods go here...
+    // jquery selectors use the same syntax as css selectors
+    // $(selector).action()
+  
+    //can also do (button).on("click",function(){})
+    
+
+    //focus in and out on the input boxes
+    $("input").focus(function(){
+        $(this).css("background-color", "#e7e9eb");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "white");
+    });
+
+    //validate the id for form
+    $("#form").validate();
+
+});
+
+
 function createTable(){
     
     var rmin = document.getElementById("rowmin").value;
@@ -19,11 +44,7 @@ function createTable(){
 
     //check if input is empty
     var isError = false;
-    if ( rmin == "" || rmax == "" || cmin == "" || cmax == ""){
-        document.getElementById("errorMessage").innerHTML += 
-        "Please fill in all inputs. "
-        isError = true;
-    }
+    
     //check whole numbers
     if ( rmin % 1 || rmax % 1  || cmin % 1  || cmax % 1 ){
         document.getElementById("errorMessage").innerHTML += 
