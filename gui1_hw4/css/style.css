@@ -23,7 +23,7 @@ td:first-child{
 	color: white;
 }
 #myTable {
-	overflow: scroll;
+	overflow: auto;
 }
 table {
 	table-layout: fixed;

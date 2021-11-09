@@ -5,7 +5,7 @@ Email: derrick_lor@student.uml.edu
 GUI Programming I
 Date: 11/4/2021
 Assignment: Homework 4 jQuery validation
-Sources: w3schools jqueryvalidation youtube
+Sources: w3schools jqueryvalidation youtube stackoverflow
 */
 
 
@@ -27,12 +27,54 @@ $(document).ready(function(){
     });
 
     //validate the id for form
-    $("#form").validate();
+    $("#form").validate({
+        rules:{
+            rowmin: {
+                required: true,
+                number: true,
+                range: [-50, 50]
+            },
+            rowmax: {
+                required: true,
+                number: true,
+                range: [-50, 50]
+            },
+            colmin: {
+                required: true,
+                number: true,
+                range: [-50, 50]
+            },
+            colmax: {
+                required: true,
+                number: true,
+                range: [-50, 50]
+            }
+        },
+        messages:{
+            rowmin: {
+                required: "Enter a number from -50 to 50."
+            },
+            rowmax: {
+                required: "Enter a number from -50 to 50."
+            },
+            colmin: {
+                required: "Enter a number from -50 to 50."
+            },
+            colmax: {
+                required: "Enter a number from -50 to 50."
+            }
+        }
+    });
 
 });
 
 
 function createTable(){
+
+    //prevent the js from returning and reloading page
+    $("#form").submit(function(e) {
+        e.preventDefault();
+    });
     
     var rmin = document.getElementById("rowmin").value;
     var rmax = document.getElementById("rowmax").value;
@@ -45,18 +87,31 @@ function createTable(){
     //check if input is empty
     var isError = false;
     
+    //swap min and max if one is greater than the other
+    var temp = 0;
+    if ( rmin > rmax)
+    {
+        temp = rmax;
+        rmax = rmin;
+        rmin = temp;
+        document.getElementById("errorMessage").innerHTML = "swapped row values: " + rmin +","+ rmax;
+    }
+    temp = 0;
+    if ( cmin > cmax )
+    {
+        temp = cmax;
+        cmax = cmin;
+        cmin = temp;
+        document.getElementById("errorMessage").innerHTML = "swapped col values: " + cmin +","+ cmax;
+    }
+
     //check whole numbers
     if ( rmin % 1 || rmax % 1  || cmin % 1  || cmax % 1 ){
         document.getElementById("errorMessage").innerHTML += 
         "Please enter whole numbers. "
         isError = true;
     }
-    //check min is < max
-    if ( rmin > rmax || cmin > cmax){
-        document.getElementById("errorMessage").innerHTML += 
-        "Minimum cannot be larger than maximum. "
-        isError = true;
-    }
+    
     //check if in bounds
     if ( rmin < -50 || rmax > 50 || cmin < -50 || cmax > 50 ||
          rmin > 50  || rmax < -50|| cmin > 50  || cmax < -50){
