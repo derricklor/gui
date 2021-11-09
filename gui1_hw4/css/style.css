@@ -7,7 +7,11 @@ Date: 11/4/2021
 Assignment: Homework 4 jQuery validation
 Sources: w3schools jqueryvalidation youtube
 */
-
+body {
+	margin-left: 10%;
+	background-color: #e7e7e7;
+	font-family: Roboto;
+}
 /*creates the gray stripes*/
 tr:nth-child(even){
 	background-color: lightgray;

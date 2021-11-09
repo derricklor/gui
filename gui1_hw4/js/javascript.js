@@ -20,7 +20,7 @@ $(document).ready(function(){
 
     //focus in and out on the input boxes
     $("input").focus(function(){
-        $(this).css("background-color", "#e7e9eb");
+        $(this).css("background-color", "#e7e7e7");
     });
     $("input").blur(function(){
         $(this).css("background-color", "white");
@@ -83,6 +83,7 @@ function createTable(){
 
     //reset errormessage
     document.getElementById("errorMessage").innerHTML = "";
+    
 
     //check if input is empty
     var isError = false;
@@ -96,7 +97,6 @@ function createTable(){
         rmin = temp;
         document.getElementById("errorMessage").innerHTML = "swapped row values: " + rmin +","+ rmax;
     }
-    temp = 0;
     if ( cmin > cmax )
     {
         temp = cmax;
@@ -105,26 +105,9 @@ function createTable(){
         document.getElementById("errorMessage").innerHTML = "swapped col values: " + cmin +","+ cmax;
     }
 
-    //check whole numbers
-    if ( rmin % 1 || rmax % 1  || cmin % 1  || cmax % 1 ){
-        document.getElementById("errorMessage").innerHTML += 
-        "Please enter whole numbers. "
-        isError = true;
-    }
     
-    //check if in bounds
-    if ( rmin < -50 || rmax > 50 || cmin < -50 || cmax > 50 ||
-         rmin > 50  || rmax < -50|| cmin > 50  || cmax < -50){
-        document.getElementById("errorMessage").innerHTML += 
-        "Please enter numbers in range -50 to 50. "
-        isError = true;
-    }
-    //if any error occurs, then immediately stop
-    if (isError)
-    {
-        return false;
-    }
-    
+    document.getElementById("errorMessage").innerHTML = "rmin: "+rmin +", rmax: "+rmax +"<br> cmin: "+cmin +", cmax: "+cmax;
+
     //get div from html
     var myTable = document.getElementById("myTable");
 
