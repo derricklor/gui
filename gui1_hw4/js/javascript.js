@@ -84,10 +84,6 @@ function createTable(){
     //reset errormessage
     document.getElementById("errorMessage").innerHTML = "";
     
-
-    //check if input is empty
-    var isError = false;
-    
     //swap min and max if one is greater than the other
     var temp = 0;
     if ( rmin > rmax)
@@ -131,44 +127,30 @@ function createTable(){
         text = document.createTextNode(x);
         td.appendChild(text);   //add text to td
         tr.appendChild(td);     //add td to tr
-        //create new td for next iteration
-        td = document.createElement("td");
+        td = document.createElement("td");//create new td for next iteration
     }
-    //append column header to table
-    table.appendChild(tr);
-
+    table.appendChild(tr);//append column header to table
     //reset td and tr
     tr = document.createElement("tr");
     td = document.createElement("td");
-
     for (var i = rmin; i <= rmax; i++)
     {
         //insert row index
         text = document.createTextNode(i);
         td.appendChild(text);
         tr.appendChild(td);
-
-        //reset td 
-        td = document.createElement("td");
-
+        td = document.createElement("td");//reset td 
         for (var k = cmin; k <= cmax; k++)
         {
             //calculate the mutltiplication
             text = document.createTextNode(i*k);
-
             td.appendChild(text);   //add text to td
             tr.appendChild(td);     //add td to tr
-
-            //create new td element for next iteration
-            td = document.createElement("td");
+            td = document.createElement("td");//create new td element for next iteration
         }
-
         table.appendChild(tr);  //add tr to table
-
-        //create new tr element for next iteration
-        tr = document.createElement("tr");
+        tr = document.createElement("tr");//create new tr element for next iteration
     }
-
     myTable.appendChild(table); //add table into the html
     return;
 }
