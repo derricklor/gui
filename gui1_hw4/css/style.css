@@ -27,7 +27,9 @@ td:first-child{
 	color: white;
 }
 #myTable {
-	overflow: auto;
+	overflow: scroll;
+	max-height: 280px;
+	max-width: 500px;
 }
 table {
 	table-layout: fixed;
