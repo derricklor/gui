@@ -76,10 +76,11 @@ function createTable(){
         e.preventDefault();
     });
     
-    var rmin = document.getElementById("rowmin").value;
-    var rmax = document.getElementById("rowmax").value;
-    var cmin = document.getElementById("colmin").value;
-    var cmax = document.getElementById("colmax").value;
+    //parse as Int or else value returned is string type
+    var rmin = parseInt(document.getElementById("rowmin").value);
+    var rmax = parseInt(document.getElementById("rowmax").value);
+    var cmin = parseInt(document.getElementById("colmin").value);
+    var cmax = parseInt(document.getElementById("colmax").value);
 
     //reset errormessage
     document.getElementById("errorMessage").innerHTML = "";
@@ -101,8 +102,8 @@ function createTable(){
         document.getElementById("errorMessage").innerHTML = "swapped col values: " + cmin +","+ cmax;
     }
 
-    
-    document.getElementById("errorMessage").innerHTML = "rmin: "+rmin +", rmax: "+rmax +"<br> cmin: "+cmin +", cmax: "+cmax;
+    //for testing purposes
+    //document.getElementById("errorMessage").innerHTML = "rmin: "+rmin +", rmax: "+rmax +"<br> cmin: "+cmin +", cmax: "+cmax;
 
     //get div from html
     var myTable = document.getElementById("myTable");
