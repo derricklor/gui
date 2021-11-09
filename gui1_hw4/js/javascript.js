@@ -117,18 +117,16 @@ function createTable(){
     var text = document.createTextNode(" "); 
 
     //create the column header
-    //append the empty corner cell
-    td.appendChild(text);
-    tr.appendChild(td);
-    td = document.createElement("td");//reset td
-    //append the column header
+    //hw3 converted to innerHTML
+    var t = "<tr><td></td>"; //append the empty corner cell
     for (var x = cmin; x <= cmax; x++)
     {
-        text = document.createTextNode(x);
-        td.appendChild(text);   //add text to td
-        tr.appendChild(td);     //add td to tr
-        td = document.createElement("td");//create new td for next iteration
+        t += "<td>" + x + "</td>";
     }
+    table.innerHTML += t + "</tr>";
+
+    //tried to convert to innerHTML but failed
+    //for some reason the style wont apply to the table
     table.appendChild(tr);//append column header to table
     //reset td and tr
     tr = document.createElement("tr");
