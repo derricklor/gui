@@ -8,6 +8,8 @@ Assignment: Homework 4 jQuery validation
 Sources: w3schools jqueryvalidation youtube stackoverflow
 */
 
+var tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>",
+    tabCounter = 1;
 
 $(document).ready(function(){
 
@@ -26,49 +28,86 @@ $(document).ready(function(){
         $(this).css("background-color", "white");
     });
 
-    //validate the id for form
     $("#form").validate({
-        rules:{
-            rowmin: {
-                required: true,
-                number: true,
-                range: [-50, 50]
+            rules:{
+                rowmin: {
+                    required: true,
+                    number: true,
+                    range: [-50, 50]
+                },
+                rowmax: {
+                    required: true,
+                    number: true,
+                    range: [-50, 50]
+                },
+                colmin: {
+                    required: true,
+                    number: true,
+                    range: [-50, 50]
+                },
+                colmax: {
+                    required: true,
+                    number: true,
+                    range: [-50, 50]
+                }
             },
-            rowmax: {
-                required: true,
-                number: true,
-                range: [-50, 50]
-            },
-            colmin: {
-                required: true,
-                number: true,
-                range: [-50, 50]
-            },
-            colmax: {
-                required: true,
-                number: true,
-                range: [-50, 50]
+            messages:{
+                rowmin: {
+                    required: "Enter a number from -50 to 50."
+                },
+                rowmax: {
+                    required: "Enter a number from -50 to 50."
+                },
+                colmin: {
+                    required: "Enter a number from -50 to 50."
+                },
+                colmax: {
+                    required: "Enter a number from -50 to 50."
+                }
             }
-        },
-        messages:{
-            rowmin: {
-                required: "Enter a number from -50 to 50."
-            },
-            rowmax: {
-                required: "Enter a number from -50 to 50."
-            },
-            colmin: {
-                required: "Enter a number from -50 to 50."
-            },
-            colmax: {
-                required: "Enter a number from -50 to 50."
-            }
-        }
+    })  //end validate
+    
+
+    
+
+    //prevent the js from returning and reloading page
+    $("#form").submit(function(e) {
+        e.preventDefault();
     });
 
-    $("#tabs").tabs();
+    var tabs = $("#myTabs").tabs();
+
+    // Close icon: removing the tab on click
+    tabs.on( "click", "span.ui-icon-close", function() {
+        var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+        $( "#" + panelId ).remove();
+        tabs.tabs( "refresh" );
+    });
+
 
 });
+
+
+
+function addTab() {
+    var tabTitle = $("#rowmin").val() + "," + $("#rowmax").val() + "x" + $("#colmin").val() + "," + $("#colmax").val();
+    if (tabTitle == ",x,") {
+        tabTitle = "Tab " + tabCounter;
+    }
+
+    var label = tabTitle || "Tab " + tabCounter,
+    id = "tabs-" + tabCounter,
+    li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ),
+    tabContentHtml = $("#myTable").html();
+
+    var tabs = $("#myTabs").tabs();
+    tabs.find( ".ui-tabs-nav" ).append( li );
+    tabs.append( "<div id='" + id + "'><p>" + tabContentHtml + "</p></div>" );
+    tabs.tabs( "refresh" );
+    tabCounter++;
+}
+
+
 
 
 function createTable(){
@@ -95,6 +134,7 @@ function createTable(){
         rmax = rmin;
         rmin = temp;
         document.getElementById("errorMessage").innerHTML += "Swapped row values: " + rmin +","+ rmax + ". ";
+        document.getElementById("errorMessage").innerHTML += tabTitle;
     }
     if ( cmin > cmax )
     {

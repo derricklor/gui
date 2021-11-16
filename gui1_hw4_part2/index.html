@@ -15,7 +15,8 @@ Sources: w3schools jqueryvalidation youtube stackoverflow
   <title>Multiplication Table Generator</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <!--link the jquery css file to style tabs and sliders-->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -42,11 +43,24 @@ Sources: w3schools jqueryvalidation youtube stackoverflow
   <button class="submit" type="submit">Create Table</button>
 </form>
 
+<button id="addtab" onclick="addTab();">Add Tab</button>
+
 <!--empty divs to be filled later with javascript-->
 <div id="errorMessage"></div>
+
+<div id="myTabs">
+ <ul>
+   
+ </ul>
+ 
+</div>
+
 <hr>  <!--hr to create a line-->
 <div id="myTable"></div>
 
+<!--link jquery-->
+<script src="https://code.jquery.com/jquery-3.6.0.js" 
+integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <!--link the jquery validation-->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 <!--import the ui library including all, core, widget, and tabs-->
