@@ -5,7 +5,7 @@ Email: derrick_lor@student.uml.edu
 GUI Programming I
 Date: 11/4/2021
 Assignment: Homework 4 jQuery validation
-Sources: w3schools jqueryvalidation youtube stackoverflow
+Sources: w3schools jqueryvalidation youtube stackoverflow https://jqueryui.com/tabs/#manipulation
 */
 
 var tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>",
@@ -95,9 +95,8 @@ function addTab() {
         tabTitle = "Tab " + tabCounter;
     }
 
-    var label = tabTitle || "Tab " + tabCounter,
-    id = "tabs-" + tabCounter,
-    li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ),
+    var id = "tabs-" + tabCounter,
+    li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, tabTitle ) ),
     tabContentHtml = $("#myTable").html();
 
     var tabs = $("#myTabs").tabs();
