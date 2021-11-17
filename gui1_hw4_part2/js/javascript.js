@@ -3,13 +3,12 @@ Copyright 2021 Derrick Lor
 Umass Lowell Computer Science
 Email: derrick_lor@student.uml.edu
 GUI Programming I
-Date: 11/4/2021
-Assignment: Homework 4 jQuery validation
+Date: 11/17/2021
+Assignment: Homework 4 Tabs and Sliders
 Sources: w3schools jqueryvalidation youtube stackoverflow https://jqueryui.com/tabs/#manipulation
 */
 
-var tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>",
-    tabCounter = 1;
+var tabCounter = 1;
 
 $(document).ready(function(){
 
@@ -96,13 +95,14 @@ function addTab() {
     }
 
     var id = "tabs-" + tabCounter,
-    li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, tabTitle ) ),
     tabContentHtml = $("#myTable").html();
 
+    var iz = "<li><a href='#" + id + "'>" + tabTitle + "</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>";
+
     var tabs = $("#myTabs").tabs();
-    tabs.find( ".ui-tabs-nav" ).append( li );
-    tabs.append( "<div id='" + id + "'><p>" + tabContentHtml + "</p></div>" );
-    tabs.tabs( "refresh" );
+    tabs.find(".ui-tabs-nav").append(iz);
+    tabs.append("<div id='" + id + "'><p>" + tabContentHtml + "</p></div>");
+    tabs.tabs("refresh");
     tabCounter++;
 }
 
