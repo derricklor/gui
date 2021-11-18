@@ -15,8 +15,70 @@ $(document).ready(function(){
     // jQuery methods go here...
     // jquery selectors use the same syntax as css selectors
     // $(selector).action()
-  
     //can also do (button).on("click",function(){})
+
+    //add two way binding between number box and slider
+    document.getElementById("rowmin").addEventListener('input', function()
+    {
+        $("#rowminSlider").slider("value", $("#rowmin").val());
+        createTable();
+    });
+    document.getElementById("rowmax").addEventListener('input', function()
+    {
+        $("#rowmaxSlider").slider("value", $("#rowmax").val());
+        createTable();
+    });
+    document.getElementById("colmin").addEventListener('input', function()
+    {
+        $("#colminSlider").slider("value", $("#colmin").val());
+        createTable();
+    });
+    document.getElementById("colmax").addEventListener('input', function()
+    {
+        $("#colmaxSlider").slider("value", $("#colmax").val());
+        createTable();
+    });
+
+
+    //create the sliders with two way binding with number box
+    var rowminSliderOpts = {
+        animate: true, disabled: false, max: 50, min: -50, 
+        orientation: "horizontal", step: 1, value: 0,
+        //values: [25, 75], //used for double handle sliders
+        //range: "max", //used for highlighting range
+        slide: function() {
+            $("#rowmin").val($("#rowminSlider").slider("value"));
+            createTable();
+        }
+    };
+    var rowmaxSliderOpts = {
+        animate: true, disabled: false, max: 50, min: -50, 
+        orientation: "horizontal", step: 1, value: 0,
+        slide: function() {
+            $("#rowmax").val($("#rowmaxSlider").slider("value"));
+            createTable();
+        }
+    };
+    var colminSliderOpts = {
+        animate: true, disabled: false, max: 50, min: -50, 
+        orientation: "horizontal", step: 1, value: 0,
+        slide: function() {
+            $("#colmin").val($("#colminSlider").slider("value"));
+            createTable();
+        }
+    };
+    var colmaxSliderOpts = {
+        animate: true, disabled: false, max: 50, min: -50, 
+        orientation: "horizontal", step: 1, value: 0,
+        slide: function() {
+            $("#colmax").val($("#colmaxSlider").slider("value"));
+            createTable();
+        }
+    };
+    $("#rowminSlider").slider(rowminSliderOpts);
+    $("#rowmaxSlider").slider(rowmaxSliderOpts);
+    $("#colminSlider").slider(colminSliderOpts);
+    $("#colmaxSlider").slider(colmaxSliderOpts);
     
 
     //focus in and out on the input boxes
@@ -30,24 +92,16 @@ $(document).ready(function(){
     $("#form").validate({
             rules:{
                 rowmin: {
-                    required: true,
-                    number: true,
-                    range: [-50, 50]
+                    required: true, number: true, range: [-50, 50]
                 },
-                rowmax: {
-                    required: true,
-                    number: true,
-                    range: [-50, 50]
+                rowmax: { 
+                    required: true, number: true, range: [-50, 50]
                 },
                 colmin: {
-                    required: true,
-                    number: true,
-                    range: [-50, 50]
+                    required: true, number: true, range: [-50, 50]
                 },
                 colmax: {
-                    required: true,
-                    number: true,
-                    range: [-50, 50]
+                    required: true, number: true, range: [-50, 50]
                 }
             },
             messages:{
@@ -68,23 +122,17 @@ $(document).ready(function(){
     
 
     
-
-    //prevent the js from returning and reloading page
-    $("#form").submit(function(e) {
-        e.preventDefault();
-    });
-
     var tabs = $("#myTabs").tabs();
 
-    // Close icon: removing the tab on click
-    tabs.on( "click", "span.ui-icon-close", function() {
-        var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
-        $( "#" + panelId ).remove();
-        tabs.tabs( "refresh" );
+    //removing the tab on click
+    tabs.on("click", "span.ui-icon-close", function() {
+        var panelId = $(this).closest("li").remove().attr("aria-controls");
+        $("#" + panelId).remove();
+        tabs.tabs("refresh");
     });
 
 
-});
+}); //end ready
 
 
 
@@ -111,10 +159,7 @@ function addTab() {
 
 function createTable(){
 
-    //prevent the js from returning and reloading page
-    $("#form").submit(function(e) {
-        e.preventDefault();
-    });
+    
     
     //parse as Int or else value returned is string type
     var rmin = parseInt(document.getElementById("rowmin").value);
@@ -133,7 +178,6 @@ function createTable(){
         rmax = rmin;
         rmin = temp;
         document.getElementById("errorMessage").innerHTML += "Swapped row values: " + rmin +","+ rmax + ". ";
-        document.getElementById("errorMessage").innerHTML += tabTitle;
     }
     if ( cmin > cmax )
     {

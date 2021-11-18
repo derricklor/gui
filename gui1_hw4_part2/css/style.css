@@ -14,7 +14,7 @@ body {
 }
 /*creates the gray stripes*/
 tr:nth-child(even){
-	background-color: lightgray;
+	background-color: gray;
 }
 /*styles the x-axis header*/
 tr:first-child{
@@ -31,29 +31,33 @@ td:first-child{
 	max-height: 280px;
 	max-width: 500px;
 }
-table {
-	table-layout: fixed;
-}
 
 .error {
 	color: red;
 }
 
-
 /*tab styling*/
 #myTabs {
- width:400px; padding:5px; border:1px solid #636363;
- background:#c2c2c2 none;
+ 	width:500px; padding:5px; border:1px solid #636363;
+ 	background:#c2c2c2 none; max-width: 500px;
 }
 .ui-widget-header {
- border:0; background:#c2c2c2 none; font-family:Georgia;
+ 	border:0; background:#c2c2c2 none;
 }
 #myTabs .ui-widget-content {
- border:1px solid #aaa; background:#fff none; font-size:80%;
+ 	border:1px solid #aaa; background:#fff none; font-size:80%;
+ 	overflow: scroll;
+	max-height: 150px;
+	max-width: 500px;
 }
 .ui-state-default, .ui-widget-content .ui-state-default {
- border:1px solid #636363; background:#a2a2a2 none;
+ 	border:1px solid #636363; background:#a2a2a2 none;
 }
 .ui-state-active, .ui-widget-content .ui-state-active {
- border:1px solid #aaa; background:#fff none;
+ 	border:1px solid #aaa; background:#fff none;
+}
+
+/*slider styling*/
+#rowminSlider, #rowmaxSlider, #colminSlider, #colmaxSlider{
+ 	width:300px; height:10px; border:none; position:relative;
 }

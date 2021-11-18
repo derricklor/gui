@@ -28,19 +28,24 @@ Sources: w3schools jqueryvalidation youtube stackoverflow https://jqueryui.com/t
 
 <form id="form" onsubmit="createTable();" method="get">
   <label for="rowmin">Row minimum:</label>
-  <input type="number" id="rowmin" name="rowmin" required>
+  <input type="number" id="rowmin" name="rowmin" value="0" required>
+  <div id="rowminSlider"></div>
   <br>
   <label for="rowmax">Row maximum:</label>
-  <input type="number" id="rowmax" name="rowmax" required>
+  <input type="number" id="rowmax" name="rowmax" value="0" required>
+  <div id="rowmaxSlider"></div>
   <br>
   <label for="colmin">Column minimum:</label>
-  <input type="number" id="colmin" name="colmin" required>
+  <input type="number" id="colmin" name="colmin" value="0" required>
+  <div id="colminSlider"></div>
   <br>
   <label for="colmax">Column maximum:</label>
-  <input type="number" id="colmax" name="colmax" required>
+  <input type="number" id="colmax" name="colmax" value="0" required>
+  <div id="colmaxSlider"></div>
   <br><br>
-  <!-- validate the form before running createTable -->
+  <!-- validate the form before running createTable 
   <button class="submit" type="submit">Create Table</button>
+  dont need this anymore-->
 </form>
 
 <button id="addtab" onclick="addTab();">Add Tab</button>
@@ -55,7 +60,6 @@ Sources: w3schools jqueryvalidation youtube stackoverflow https://jqueryui.com/t
  
 </div>
 
-<hr>  <!--hr to create a line-->
 <div id="myTable"></div>
 
 <!--link jquery-->
