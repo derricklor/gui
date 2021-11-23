@@ -5,7 +5,7 @@ Email: derrick_lor@student.uml.edu
 GUI Programming I
 Date: 11/17/2021
 Assignment: Homework 4 Tabs and Sliders
-Sources: w3schools jqueryvalidation youtube
+Sources: w3schools jqueryvalidation youtube "jQuery UI 1.10: The User Interface Library for jQuery"
 */
 body {
 	margin-left: 10%;
@@ -41,7 +41,10 @@ td:first-child{
 	color: red;
 }
 
-/*tab styling*/
+/*tab styling 
+style inspiration from Dan Wellman’s book on the jQuery UI library Chapter 3:Tabs 
+Chapter 6: Sliders
+*/
 #myTabs {
  	width:500px; padding:5px; border:1px solid #636363;
  	background:#c2c2c2 none; max-width: 500px;

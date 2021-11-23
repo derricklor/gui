@@ -8,16 +8,15 @@ Assignment: Homework 4 Tabs and Sliders
 Sources: w3schools jqueryvalidation youtube stackoverflow https://jqueryui.com/tabs/#manipulation
 */
 
-var tabCounter = 1;
+var counter = 1;
 
 $(document).ready(function(){
 
     // jQuery methods go here...
     // jquery selectors use the same syntax as css selectors
-    // $(selector).action()
-    //can also do (button).on("click",function(){})
 
     //add two way binding between number box and slider
+    //code inspiration from Dan Wellman’s book on the jQuery UI library Chapter 6: Sliders
     document.getElementById("rowmin").addEventListener('input', function()
     {
         $("#rowminSlider").slider("value", $("#rowmin").val());
@@ -124,6 +123,7 @@ $(document).ready(function(){
     
     var tabs = $("#myTabs").tabs();
 
+
     //removing the tab on click
     tabs.on("click", "span.ui-icon-close", function() {
         var panelId = $(this).closest("li").remove().attr("aria-controls");
@@ -135,32 +135,28 @@ $(document).ready(function(){
 }); //end ready
 
 
-
+//code inspiration from jQuery UI library https://jqueryui.com/tabs/#manipulation
 function addTab() {
     var tabTitle = $("#rowmin").val() + "," + $("#rowmax").val() + "x" + $("#colmin").val() + "," + $("#colmax").val();
     if (tabTitle == ",x,") {
-        tabTitle = "Tab " + tabCounter;
+        tabTitle = "Tab " + counter;
     }
 
-    var id = "tabs-" + tabCounter,
+    var id = "tabs-" + counter,
     tabContentHtml = $("#myTable").html();
 
-    var iz = "<li><a href='#" + id + "'>" + tabTitle + "</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>";
+    var iz = "<li><a href='#" + id + "'>" + tabTitle + "</a> </span><span class='ui-icon ui-icon-close' role='presentation'></span></li>";
 
     var tabs = $("#myTabs").tabs();
     tabs.find(".ui-tabs-nav").append(iz);
     tabs.append("<div id='" + id + "'><p>" + tabContentHtml + "</p></div>");
     tabs.tabs("refresh");
-    tabCounter++;
+    counter++;
 }
-
-
 
 
 function createTable(){
 
-    
-    
     //parse as Int or else value returned is string type
     var rmin = parseInt(document.getElementById("rowmin").value);
     var rmax = parseInt(document.getElementById("rowmax").value);
