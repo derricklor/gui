@@ -4,8 +4,6 @@
 	margin-right: auto;
 	}
 
-
-
 .ui-widget-header p, .ui-widget-content p { 
   	margin: 0; 
   }
@@ -16,7 +14,7 @@
   margin-right: auto;
   width: 50%;
   height: 20%;
-	z-index: -1;
+	z-index: 0;
 	position: absolute;
 }
 
@@ -30,9 +28,11 @@
   align-items: center;
 }
 
-#indicators{
+#textbox{
   padding: 20px 20px 20px 20px;
   text-align: center;
+  color: white;
+  background-color: slategrey;
 }
 .tileFromBag {
 width: 4em;
@@ -63,4 +63,13 @@ height: 4em;
   width: 5em;
   height: 5em;
   background-image: url("../graphics_data/doubleWordSlot.PNG");
+}
+
+
+body {
+	background-color: royalblue;
+}
+
+#nextButton {
+	margin-left: 50px;
 }

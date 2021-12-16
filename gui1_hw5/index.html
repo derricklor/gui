@@ -14,15 +14,14 @@
 <body>
 
 
-<div id="indicators" class="row">
+<div id="textbox" class="row">
     <h>Score:</h>
     <p id="score">0</p>
     <h>Tiles Remaining:</h>
-    <p id="tilesLeft">93</p>
+    <p id="remainingtiles">93</p>
     <h>Letter Score:</h>
     <p id="total">0</p>
 </div>
-
 
 
 
@@ -39,16 +38,16 @@
 
 
 
-<!--Control buttons -->
+<!--two buttons for resetting and submitting-->
 <center>
-    <button id="nextWordButton" onclick="nextWord()">Next Word</button>
     <button id="restartButton" onclick="restart()">Reset</button>
+    <button id="nextButton" onclick="nextWord()">Next Word</button>
 </center>
 
 
 
 
-<!--Rack and tiles-->
+<!--elements for the tile holder and individual tile pieces-->
 <div id="rack" class="row ui-droppable">
     <img id="holder_img" src="graphics_data/scrabble-tile-holder-406774_640.png"></img>
     <div id="rackdiv" class="row ui-droppable d-flex justify-content-center">
@@ -61,8 +60,6 @@
         <div id="tile7" class="tile ui-draggable" slot="7"> </div>
     </div>
 </div>
-
-
 
 
 

@@ -6,6 +6,7 @@ GUI Programming I
 Date: 12/16/2021
 Assignment: Homework 5 Scrabble
 Sources: w3schools jquery youtube stackoverflow https://jqueryui.com
+	used websites created by Yong Cho and Jason Downing to build templates
 */
 
 //tried to use JSON, but could not get the XMLHttpRequest to load JSON
@@ -47,241 +48,225 @@ ScrabbleTiles["Y"] = { "value" : 4,  "original-distribution" : 2,  "number-remai
 ScrabbleTiles["Z"] = { "value" : 10, "original-distribution" : 1,  "number-remaining" : 1  } ;
 ScrabbleTiles["_"] = { "value" : 0,  "original-distribution" : 2,  "number-remaining" : 2  } ;
 
-
-var default_tiles = ["A", "A", "A", "A", "A", "A", "A", "A", "A", 
-                        "B", "B", "C", "C", "D", "D", "D", "D", "E", 
-                        "E", "E", "E", "E", "E", "E", "E", "E", "E", 
-                        "E", "E", "F", "F", "G", "G", "G", "H", "H",  
-                        "I", "I", "I", "I", "I", "I", "I", "I", "I", 
-                        "J", "K", "L", "L", "L", "L", "M", "M", "N",
-                        "N", "N", "N", "N", "N", "O", "O", "O", "O", 
-                        "O", "O", "O", "O", "P", "P", "Q", "R", "R", 
-                        "R", "R", "R", "R", "S", "S", "S", "S", "T", 
-                        "T", "T", "T", "T", "T", "U", "U", "U", "U",  
-                        "V", "V", "W", "W", "X", "Y", "Y", "Z", "_", 
-                        "_"
-                        ] ;
+var default_tiles = ["A", "A", "A", "A", "A", "A", "A", "A", "A",
+  "B", "B", "C", "C", "D", "D", "D", "D", "E",
+  "E", "E", "E", "E", "E", "E", "E", "E", "E",
+  "E", "E", "F", "F", "G", "G", "G", "H", "H",
+  "I", "I", "I", "I", "I", "I", "I", "I", "I",
+  "J", "K", "L", "L", "L", "L", "M", "M", "N",
+  "N", "N", "N", "N", "N", "O", "O", "O", "O",
+  "O", "O", "O", "O", "P", "P", "Q", "R", "R",
+  "R", "R", "R", "R", "S", "S", "S", "S", "T",
+  "T", "T", "T", "T", "T", "U", "U", "U", "U",
+  "V", "V", "W", "W", "X", "Y", "Y", "Z", "_",
+  "_"
+];
 var tiles = [...default_tiles]
 var missingSlots = [];
-var newGame = 1;
 var gameScore = 0;
 var wordScore = 0;
 
-$(document).ready(function(){
+$(document).ready(function() {
 
-	//init slots on the board to be droppable
-	$(function() 
-	{
-		for(var i = 1; i < 8; i++) 
-		{
-			$("#slot"+i).droppable(droppableOpts);
+  //init slots on the board to be droppable
+  $(function() {
+    for (var i = 1; i < 8; i++) {
+      $("#slot" + i).droppable(dropOptions);
 
-            let index = Math.floor((Math.random() * tiles.length) % tiles.length);
-            let letterPickedFromBag = tiles[index];
-            jQuery('<img/>', {
-                id: `tileFromBag${i}`,
-                "class": 'tileFromBag ui-draggable',
-                letter : letterPickedFromBag,
-                points  : ScrabbleTiles[letterPickedFromBag].value,
-                fromSlot   : i
-            }).appendTo(`#tile${i}`);
-											
-            $(`#tileFromBag${i}`).attr("src", `graphics_data/Scrabble_Tiles//Scrabble_Tile_${letterPickedFromBag}.jpg`);
-            tiles.splice(index, 1); 
-            
-            //console.log(letterPickedFromBag);
+      let index = Math.floor((Math.random() * tiles.length) % tiles.length);
+      let alphaLetter = tiles[index];
+      jQuery('<img/>', {
+        id: `tileFromBag${i}`,
+        "class": 'tileFromBag ui-draggable',
+        letter: alphaLetter,
+        points: ScrabbleTiles[alphaLetter].value,
+        fromSlot: i
+      }).appendTo(`#tile${i}`);
 
-            $(`#tileFromBag${i}`).draggable();
-            $(`#tileFromBag${i}`).hover(function() {
-                $(this).css('cursor','pointer');
-            });
-            $( `#tileFromBag${i}` ).draggable({
-                scroll: false
-            });
-            $( `#tileFromBag${i}` ).draggable({
-                revert: true
-            });
-        }
-        newGame = 0;
-	});
+      $(`#tileFromBag${i}`).attr("src", `graphics_data/Scrabble_Tiles//Scrabble_Tile_${alphaLetter}.jpg`);
+      tiles.splice(index, 1);
+
+      $(`#tileFromBag${i}`).draggable();
+      $(`#tileFromBag${i}`).hover(function() {
+        $(this).css('cursor', 'pointer');
+      });
+      $(`#tileFromBag${i}`).draggable({
+        scroll: false
+      });
+      $(`#tileFromBag${i}`).draggable({
+        revert: true
+      });
+    }
+  });
 
 
 }); //end ready
 
-var dropped;
-var droppedOn;
-var dropped_id;
-var droppedOn_id;
-var droppableOpts = {
-    drop: function(ev, ui) {
-        dropped = ui.draggable;
-        droppedOn = $(this);
-        $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);
-        dropped.position({of: droppedOn});
+var droppedItem;
+var droppedOnItem;
+var droppedItem_Id;
+var droppedOnItem_Id;
+var dropOptions = {
+  drop: function(ev, ui) {
+    droppedItem = ui.draggable;
+    droppedOnItem = $(this);
+    $(droppedItem).detach().css({
+      top: 0,
+      left: 0
+    }).appendTo(droppedOnItem);
+    droppedItem.position({
+      of: droppedOnItem
+    });
 
-        droppedOn_id = droppedOn[0].id;
-        
-        $( `#${droppedOn_id}` ).droppable({
-            accept: ".tileFromBag"
-        });
-        /* keeps track of letter points */
-        //console.log($(dropped[0]));
-        var letterPoints = parseInt(dropped[0].attributes.points.nodeValue);
-        //console.log(letterPoints);
+    droppedOnItem_Id = droppedOnItem[0].id;
 
-        /* keeps track of word points */
-        //console.log($(dropped[0]));
-        var wordPoints = parseInt(dropped[0].attributes.points.nodeValue);
-        //console.log(wordPoints);
-        
-        var origin = parseInt(dropped[0].attributes.fromSlot.nodeValue);
-        //console.log(origin);
-        
-        dropped_id = dropped[0].id;
+    $(`#${droppedOnItem_Id}`).droppable({
+      accept: ".tileFromBag"
+    });
 
-        $(`#${dropped_id}`).draggable("disable"); //disables draggable after dropping
+    /* keeps track of word points */
+    var wordPoints = parseInt(droppedItem[0].attributes.points.nodeValue);
 
-        missingSlots.push(origin);//tile slot that needs to be repopulated
+    /* keeps track of letter points */
+    var letterPoints = parseInt(droppedItem[0].attributes.points.nodeValue);
 
-        var slot_number = parseInt(droppedOn[0].attributes.col.nodeValue);
-        //console.log(slot_number);
-        /*if bonus letter slot is landed */
-        if (slot_number == 2) {
-            letterPoints *= 2;
-            //console.log("double points" + letterPoints);
-        }
-        /*if bonus word slot is landed */
-        if (slot_number == 6){
-            wordPoints *= 2;
-            //console.log("double points" + wordPoints);
-        }
+    var origin = parseInt(droppedItem[0].attributes.fromSlot.nodeValue);
 
-        /* adds letter and word points */
-        gameScore += letterPoints;
-        wordScore += wordPoints;
+    droppedItem_Id = droppedItem[0].id;
 
-        $( `#${droppedOn_id}` ).droppable( "option", "accept", ".no_longer_accepts" );
+    $(`#${droppedItem_Id}`).draggable("disable"); //disables draggable after dropping
+
+    missingSlots.push(origin); //tile slot that needs to be repopulated
+
+    var slot_number = parseInt(droppedOnItem[0].attributes.col.nodeValue);
+
+    //give bonus points if landed on slots 2 or 6
+    if (slot_number == 2) {
+      letterPoints *= 2;
     }
+    if (slot_number == 6) {
+      wordPoints *= 2;
+    }
+
+    /* adds letter and word points */
+    gameScore += letterPoints;
+    wordScore += wordPoints;
+
+    $(`#${droppedOnItem_Id}`).droppable("option", "accept", ".no_longer_accepts");
+  }
 }
 
 
 function nextWord() {
 
-	//clear the slots on the rack
-	for(let i = 1; i < 8; i++)
-	{
-		$(`#slot${i}`).empty();
-	}
+  //clear the slots on the rack
+  for (let i = 1; i < 8; i++) {
+    $(`#slot${i}`).empty();
+  }
 
-	//randomize the given tiles
-	var missing = 7 - $("#rackdiv img").length;
-	while (tiles.length > 0 && missing > 0) {
-		let index = Math.floor((Math.random() * tiles.length) % tiles.length);
-		let letterPickedFromBag = tiles[index];
+  //randomize the given tiles
+  var missing = 7 - $("#rackdiv img").length;
+  while (tiles.length > 0 && missing > 0) {
+    let index = Math.floor((Math.random() * tiles.length) % tiles.length);
+    let alphaLetter = tiles[index];
 
-		putOnRack(letterPickedFromBag);
+    putOnRack(alphaLetter);
 
-		tiles.splice(index, 1); 
-
-		//console.log(letterPickedFromBag);
-		missing--;
-	}
+    tiles.splice(index, 1);
+    missing--;
+  }
 
 
-	//submit and calculate new scores
-	$('#score').text("Word Score:\n" + wordScore);
-	$('#tilesLeft').text("Tiles Remaining:\n" + tiles.length);
-	$('#total').text("Letter Score: " + gameScore);
+  //submit and calculate new scores
+  $('#score').text("" + wordScore);
+  $('#remainingtiles').text("" + tiles.length);
+  $('#total').text("" + gameScore);
 
 
-	//setup next round
-	for(let i = 1; i < 8; i++){
-        $(`#slot${i}`).droppable(droppableOpts);
-        $(`#slot${i}` ).droppable( "option", "accept", ".tileFromBag" );
-    }
+  //setup next round
+  for (let i = 1; i < 8; i++) {
+    $(`#slot${i}`).droppable(dropOptions);
+    $(`#slot${i}`).droppable("option", "accept", ".tileFromBag");
+  }
 }
 
 
 
-function putOnRack(letterPickedFromBag) {
-for ( let i = 0; i < missingSlots.length; i++) {
+function putOnRack(alphaLetter) {
+  for (let i = 0; i < missingSlots.length; i++) {
     let slot_to_fill = missingSlots[i];
     jQuery('<img/>', {
-        id: `tileFromBag${slot_to_fill}`,
-        "class": 'tileFromBag ui-draggable',
-        letter : letterPickedFromBag,
-        points  : ScrabbleTiles[letterPickedFromBag].value,
-        fromSlot   : slot_to_fill
+      id: `tileFromBag${slot_to_fill}`,
+      "class": 'tileFromBag ui-draggable',
+      letter: alphaLetter,
+      points: ScrabbleTiles[alphaLetter].value,
+      fromSlot: slot_to_fill
     }).appendTo(`#tile${slot_to_fill}`);
-    $(`#tileFromBag${slot_to_fill}`).attr("src", `graphics_data/Scrabble_Tiles/Scrabble_Tile_${letterPickedFromBag}.jpg`);
+    $(`#tileFromBag${slot_to_fill}`).attr("src", `graphics_data/Scrabble_Tiles/Scrabble_Tile_${alphaLetter}.jpg`);
     missingSlots.splice(i, 1);
 
     $(`#tileFromBag${slot_to_fill}`).draggable();
     $(`#tileFromBag${slot_to_fill}`).hover(function() {
-        $(this).css('cursor','pointer');
+      $(this).css('cursor', 'pointer');
     });
-    $( `#tileFromBag${slot_to_fill}` ).draggable({
-        scroll: false
+    $(`#tileFromBag${slot_to_fill}`).draggable({
+      scroll: false
     });
-    $( `#tileFromBag${slot_to_fill}` ).draggable({
-        revert: true
+    $(`#tileFromBag${slot_to_fill}`).draggable({
+      revert: true
     });
-}
+  }
 }
 
 function restart() {
-    //clear the slots on the rack
-	for(let i = 1; i < 8; i++)
-	{
-		$(`#slot${i}`).empty();
-	}
-	//empty any remaining tiles
-    for(let i = 1; i < 8; i++){
-        $(`#tile${i}`).empty();
-    }
-    newGame = 1;
-    gameScore = 0;
-    wordScore = 0;
-    tiles = [...default_tiles];
+  //clear the slots on the rack
+  for (let i = 1; i < 8; i++) {
+    $(`#slot${i}`).empty();
+  }
+  //empty any remaining tiles
+  for (let i = 1; i < 8; i++) {
+    $(`#tile${i}`).empty();
+  }
+  gameScore = 0;
+  wordScore = 0;
+  tiles = [...default_tiles];
 
 
-    for(let i = 1; i < 8; i++){
-        $(`#slot${i}`).droppable(droppableOpts);
-        $(`#slot${i}` ).droppable( "option", "accept", ".tileFromBag" );
-    }
+  for (let i = 1; i < 8; i++) {
+    $(`#slot${i}`).droppable(dropOptions);
+    $(`#slot${i}`).droppable("option", "accept", ".tileFromBag");
+  }
 
-    for(let i = 1; i < 8; i++){
+  for (let i = 1; i < 8; i++) {
     let index = Math.floor((Math.random() * tiles.length) % tiles.length);
-    let letterPickedFromBag = tiles[index];
+    let alphaLetter = tiles[index];
     jQuery('<img/>', {
-        id: `tileFromBag${i}`,
-        "class": 'tileFromBag ui-draggable',
-        letter : letterPickedFromBag,
-        points  : ScrabbleTiles[letterPickedFromBag].value,
-        fromSlot   : i
+      id: `tileFromBag${i}`,
+      "class": 'tileFromBag ui-draggable',
+      letter: alphaLetter,
+      points: ScrabbleTiles[alphaLetter].value,
+      fromSlot: i
     }).appendTo(`#tile${i}`);
-									
-	    $(`#tileFromBag${i}`).attr("src", `graphics_data/Scrabble_Tiles/Scrabble_Tile_${letterPickedFromBag}.jpg`);
-	    tiles.splice(index, 1); 
 
-	    //console.log(letterPickedFromBag);
+    $(`#tileFromBag${i}`).attr("src", `graphics_data/Scrabble_Tiles/Scrabble_Tile_${alphaLetter}.jpg`);
+    tiles.splice(index, 1);
 
-	    $(`#tileFromBag${i}`).draggable();
-	    $(`#tileFromBag${i}`).hover(function() {
-	        $(this).css('cursor','pointer');
-	    });
-	    $( `#tileFromBag${i}` ).draggable({
-	        scroll: false
-	    });
-	    $( `#tileFromBag${i}` ).draggable({
-	        revert: true
-	    });
+    $(`#tileFromBag${i}`).draggable();
+    $(`#tileFromBag${i}`).hover(function() {
+      $(this).css('cursor', 'pointer');
+    });
+    $(`#tileFromBag${i}`).draggable({
+      scroll: false
+    });
+    $(`#tileFromBag${i}`).draggable({
+      revert: true
+    });
 
-	}
+  }
 
 
-    $('#score').text("Word Score:\n" + wordScore);
-    $('#total').text("Letter Score: " + gameScore);
-    $('#tilesLeft').text("Tiles Remaining:\n" + tiles.length);
-    }
+  $('#score').text("" + wordScore);
+  $('#remainingtiles').text("" + tiles.length);
+  $('#total').text("" + gameScore);
 
+}
