@@ -1,8 +1,66 @@
 .draggable { 
-	width: 90px; height: 80px; padding: 5px; float: left;
-	margin: 0 10px 10px 0; font-size: .9em; 
+	width: 90px; height: 90px; padding: 5px;
+	margin-left: auto;
+	margin-right: auto;
 	}
+
+
+
 .ui-widget-header p, .ui-widget-content p { 
   	margin: 0; 
   }
 #snaptarget { height: 140px; }
+
+#holder_img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 20%;
+	z-index: -1;
+	position: absolute;
+}
+
+#rack {
+	margin-right: auto;
+	margin-left: auto;
+  width: 500px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#indicators{
+  padding: 20px 20px 20px 20px;
+  text-align: center;
+}
+.tileFromBag {
+width: 4em;
+height: 4em;
+}
+.tile {
+  height: 65px;
+  width:  65px;
+}
+
+#board > img {
+	width: 5em;
+  height: 5em;
+}
+
+#slot1, #slot3, #slot4, #slot5, #slot7{
+  width: 5em;
+  height: 5em;
+  background-image: url("../graphics_data/emptySlot.PNG");
+}
+#slot2 {
+  width: 5em;
+  height: 5em;
+  background-image: url("../graphics_data/doubleLetterSlot.PNG");
+}
+
+#slot6 {
+  width: 5em;
+  height: 5em;
+  background-image: url("../graphics_data/doubleWordSlot.PNG");
+}
