@@ -1,3 +1,15 @@
+/*
+Copyright 2021 Derrick Lor
+Umass Lowell Computer Science
+Email: derrick_lor@student.uml.edu
+GUI Programming I
+Professor: Wenjin Zhou
+Date: 12/16/2021
+Assignment: Homework 5 Scrabble
+Sources: w3schools jquery youtube stackoverflow https://jqueryui.com
+	used websites created by Yong Cho and Jason Downing to build templates
+*/
+
 .draggable { 
 	width: 90px; height: 90px; padding: 5px;
 	margin-left: auto;

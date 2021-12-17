@@ -3,6 +3,7 @@ Copyright 2021 Derrick Lor
 Umass Lowell Computer Science
 Email: derrick_lor@student.uml.edu
 GUI Programming I
+Professor: Wenjin Zhou
 Date: 12/16/2021
 Assignment: Homework 5 Scrabble
 Sources: w3schools jquery youtube stackoverflow https://jqueryui.com
@@ -64,7 +65,6 @@ var default_tiles = ["A", "A", "A", "A", "A", "A", "A", "A", "A",
 var tiles = [...default_tiles]
 var missingSlots = [];
 var gameScore = 0;
-var wordScore = 0;
 
 $(document).ready(function() {
 
@@ -149,8 +149,7 @@ var dropOptions = {
     }
 
     /* adds letter and word points */
-    gameScore += letterPoints;
-    wordScore += wordPoints;
+    gameScore += letterPoints + wordPoints;
 
     $(`#${droppedOnItem_Id}`).droppable("option", "accept", ".no_longer_accepts");
   }
@@ -178,9 +177,8 @@ function nextWord() {
 
 
   //submit and calculate new scores
-  $('#score').text("" + wordScore);
+  $('#score').text("" + gameScore);
   $('#remainingtiles').text("" + tiles.length);
-  $('#total').text("" + gameScore);
 
 
   //setup next round
@@ -228,7 +226,6 @@ function restart() {
     $(`#tile${i}`).empty();
   }
   gameScore = 0;
-  wordScore = 0;
   tiles = [...default_tiles];
 
 
@@ -265,8 +262,7 @@ function restart() {
   }
 
 
-  $('#score').text("" + wordScore);
+  $('#score').text("" + gameScore);
   $('#remainingtiles').text("" + tiles.length);
-  $('#total').text("" + gameScore);
 
 }
