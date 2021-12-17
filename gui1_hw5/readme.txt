@@ -2,6 +2,18 @@ link to scrabble game: https://derricklor.github.io/gui/gui1_hw5/
 
 link to repository: https://github.com/derricklor/gui/tree/main/gui1_hw5
 
+******Github issue************************
+When uploading to github, the pages take some time to update.
+Some features or implementations will not load.
+If features are missing, download the repository to local computer
+and run offline. 
+
+Files needed to run:
+css folder
+graphics_data folder
+js folder
+index.html
+******************************************
 
 Write up:
 
